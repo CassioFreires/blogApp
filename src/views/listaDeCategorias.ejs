@@ -1,0 +1,49 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <%- include('includes/messages') %>
+                    <% if (dados.length > 0) { %>
+                        <div>
+                            <h3 class=" display-6 text-center mt-5">Lista de categorias de cursos</h3>
+                        </div>
+                        <div class="d-flex justify-content-between mt-5 mb-4">
+                            <a class="btn btn-success mb-2 fw-bold" href="/admin">Add categoria</a>
+                            <a class="btn btn-primary mb-2 fw-bold" href="/admin/postagens/add">Criar postagem</a>
+                        </div>
+                        <% for(let i=0; i < dados.length; i++) { %>
+                            <div class="card p-3 mb-3">
+                                <div>
+                                    <p class="display-6">Categoria</p>
+                                    <p class="text-start">
+                                        <span class="  text-secondary fw-bold">Tema: </span>
+                                        <%= dados[i].tema %>
+                                    </p>
+                                    <p>
+                                        <span class="  text-secondary fw-bold">Slug: </span>
+                                        <%= dados[i].slug %>
+                                    </p>
+                                    <p>
+                                        <span class="  text-secondary fw-bold">Data: </span>
+                                        <%= dados[i].date %>
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href="/admin/categorias/editar/<%= dados[i]._id %>"><img style="width: 2vw" src="/assets/img/edit.svg" alt="icon_edit"></a>
+                                    <a href="/admin/categorias/excluir/<%= dados[i]._id %>"><img style="width: 2vw; margin-left: 0.5rem" src="/assets/img/delete.svg" alt="icon_delete"></a>
+                                </div>
+                            </div>
+                            <% } %>
+                        
+                    <%} else { %>
+                        <div class="row  ">
+                            <div class="col text-center mt-5">
+                                <p class="display-6">Não existe categorias registradas!</p>
+                            </div>
+                        </div>
+                    <%}%>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('includes/footer') %>

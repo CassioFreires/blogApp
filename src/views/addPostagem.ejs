@@ -1,0 +1,36 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <%- include('includes/messages')%>
+                <h4 class="card-title mt-4 ">Lista de postagens</h4>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <a href="/admin/postagens/add"><button class="btn btn-success mt-3 fw-bold">Add postagem</button></a>
+                    <a href="/admin"><button class="btn btn-primary mt-3 fw-bold">Nova categoria</button></a>
+                </div>
+                <div class="card mt-5" style="width: 100%;">
+                    <% if(postagens.length > 0) { %>
+                        <% postagens.forEach((postagem) => { %>
+                            <div class="card-body">
+                                <h5 class="card-title"><%= postagem.titulo %></h5>
+                                <h6 class="card-subtitle mb-2">Descrição: <%= postagem.descricao %></h6>
+                                <p class="card-text"><%= postagem.conteudo %></p>
+                                <p class="fw-bold">Data: <small class="text-muted fw-normal"><%= postagem.date %></small></p>
+                                <p class="fw-bold">Categoria: <small class="fw-normal"><%= postagem.categoria.tema %></small></p>
+                                <div>
+                                    <a href="/admin/postagens/editar/<%= postagem._id %>"><img style="width: 2vw" src="/assets/img/edit.svg" alt="icon-edit"></a>
+                                    <a href="/admin/postagens/delete/<%= postagem._id %>" class="card-link"><img style="width: 2vw; margin-left: 0.5rem" src="/assets/img/delete.svg" alt="icon_delete"></a>
+                                </div>
+                                <hr>
+                              </div>
+                        <%})%>
+                    <%} else { %>
+                        <p>Nenhuma postagem registrada!</p>
+                    <%}%>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('includes/footer') %>

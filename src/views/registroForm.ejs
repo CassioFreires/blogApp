@@ -1,0 +1,35 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <h2 class="text-center display-6 mt-5 mb-5">Cria sua conta hoje!</h2>
+                <div class="card p-3">
+               
+                  <%- include('includes/messages')%>
+                  <div class="card-body">
+                    <form action="/usuario/registro" method="POST">
+                      <div class="mb-3 mt-5">
+                        <label for="exampleInputEmail1" class="form-label">Nome</label>
+                        <input type="text" class="form-control  id="exampleInputEmail1" aria-describedby="emailHelp" name="nome">
+                      </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">E-mail</label>
+                          <input type="email" class="form-control  id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Senha</label>
+                          <input type="password" class="form-control  id="exampleInputPassword1" name="senha">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Digite novamente a senha</label>
+                          <input type="password" class="form-control  id="exampleInputPassword1" name="confirmaSenha">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Criar conta</button>
+                      </form>
+                  </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('includes/footer') %>

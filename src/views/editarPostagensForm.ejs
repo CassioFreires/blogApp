@@ -1,0 +1,54 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <form class="mt-2" action="/admin/postagens/editar/<%= postagens.id %>" method="POST">
+                    <input type="hidden" value="<%= postagens.id %>" name="id">
+                    <fieldset>
+                        <legend>
+                            <h1 class="text-center display-4">Editar Postagem</h1>
+                        </legend>
+                        <%- include('includes/messages') %>
+                            <div class="mb-3">
+                                <label class="form-label">Título: </label>
+                                <input type="text" class="form-control w-25" name="titulo" required
+                                    value="<%= postagens.titulo%>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Slug: </label>
+                                <input type="text" class="form-control w-25" name="slug" required
+                                    value="<%= postagens.slug%>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Descrição: </label>
+                                <input type="text" class="form-control w-25" name="descricao" required
+                                    value="<%= postagens.descricao%>">
+                            </div>
+                            <div class="mb-3 form-floating">
+                                <textarea class="form-control" placeholder="123" style="height: 100px" name="conteudo"
+                                    required><%= postagens.conteudo%></textarea>
+                                <label for="" class="text-secondary">Conteúdo</label>
+                            </div>
+                            <div>
+                                <label for="">Categorias Registradas: </label>
+                                <select name="categoria" class="form-select form-select-sm mb-3 mt-3"
+                                    aria-label=".form-select-sm example">
+                                    <% if (categorias.length> 0) { %>
+                                        <% categorias.forEach((categoria)=> { %>
+                                            <option value="<%= categoria._id %>">
+                                                <%= categoria.tema %>
+                                            </option>
+                                            <%})%>
+                                                <%} else { %>
+                                                    <option value="0">Nenhuma categoria registrada</option>
+                                                    <%}%>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-25 fw-bold">Salvar</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('includes/footer') %>

@@ -1,0 +1,41 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav')%>
+        <div class="container">
+            <div class="row">
+                <%- include('includes/messages')%>
+                <div class="jumbotron p-5 mt-3 rounded" style="background:#E6E6FA;">
+                    <h1 class="display-4">Bem vindo ao Blog do Node!</h1>
+                    <p class="lead">Este é um Blog simples, desenvolvido com Nodejs + Express + MongoDB.</p>
+                    <hr class="my-4">
+                    <p>Aqui você pode ter novidades do mundo do Nodejs.</p>
+                    <%if(user){%>
+                        
+                    <%} else {%>
+                        <p class="lead">
+                            <a class="btn btn-primary btn-lg mt-3" href="/usuario/registro" role="button">Crie sua conta</a>
+                        </p>
+                    <%}%>
+                  </div>
+                  <hr>
+                  <div class="mt-5">
+                    <h2>Postagens recentes: </h2>
+                    <%if (postagens.length > 0) { %>
+                        <% postagens.forEach((postagem) => { %>
+                            <div class="card mt-4">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= postagem.titulo %></h5>
+                                    <p class="card-text"><%= postagem.conteudo%></p>
+                                    <a href="/postagem/<%= postagem.slug %>"><button class="btn btn-success">Leia mais</button></a>
+                                    <hr>
+                                    <p>Categoria: <small><%= postagem.categoria.tema %></small></p>
+                                    <p>Data da publicação: <small><%= postagem.categoria.date %></small></p>
+                                 </div>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <%- include('includes/footer') %>

@@ -1,0 +1,35 @@
+<%- include('includes/head') %>
+  <%- include('includes/nav')%>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+
+        <%if(dados.id) { %>
+
+            <h1 class="text-center mt-5 mb-5">Edite sua categoria</h1>
+            <form action="/admin/categorias/editar/<%= dados.id%>" method="POST">
+            <input type="hidden" value="<%= dados.id %>" name="id">
+
+        <%} else { %>
+
+            <h1 class="text-center mt-5 mb-5">Lista de categorias</h1>
+            <form action="/admin" method="POST" name="id">
+            <input type="hidden" value="<%= dados.id %>">
+
+        <%}%>
+        
+          <div class="mb-3">
+            <%- include('includes/messages')%>
+            <label for="exampleInputEmail1" class="form-label">Tema</label>
+            <input type="text" class="form-control w-50" id="exampleInputEmail1" name="tema" value="<%= dados.tema%>">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Slug</label>
+            <input type="text" class="form-control w-50" id="exampleInputPassword1" name="slug" value="<%= dados.slug%>">
+          </div>
+          <button type="submit" class="btn btn-success">Salvar</button>
+        </form>
+      </div>
+      <div class="col-2"></div>
+    </div>
+    <%- include('includes/footer') %>

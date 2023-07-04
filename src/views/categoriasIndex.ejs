@@ -1,0 +1,20 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8"> 
+                <h5 class="card-title mt-5">Categorias: </h5>
+                <%if(categorias) { %>
+                    <ul class="list-group mt-4">
+                        <%categorias.forEach((categoria) => { %>
+                            
+                            <li class="list-group-item"><a href="/categorias/<%= categoria.slug%>"><%= categoria.tema %> - <span> <%= categoria.slug %></span></a></li>
+                        <%})%>
+                    </ul>
+                <%} else { %>
+                    não existe
+                <%}%>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('includes/footer') %>

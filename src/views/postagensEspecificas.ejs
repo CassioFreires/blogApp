@@ -1,0 +1,26 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <%- include('includes/messages')%>
+                <div class="card p-3 mt-4">
+                    <%if (categorias || postagens) { %>
+                        <h5 class="card-title">Postagens sobre <%= categorias.tema%></h5>
+                        <hr>
+                        <%postagens.forEach((postagem) => { %>
+                            <div class="card-body">
+                                <h5 class="card-title"> <%= postagem.titulo %></h5>
+                                <p class="card-text"> <%= postagem.conteudo%></p>
+                                <p>Data de criação: <small><%= postagem.date%></small></p>
+                                <p>Categoria: <small><%= categorias.tema%></small></p>
+                            </div>
+                        <%})%>
+                    <%} else { %>
+                        <h6>Não existe posts!!</h6>
+                    <%}%>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('includes/footer') %>
